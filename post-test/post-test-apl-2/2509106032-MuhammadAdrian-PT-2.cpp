@@ -9,9 +9,9 @@ struct Akun {
 
 struct Trade {
     string item_diberi;
-    int qty_diberi;
+    int jumlah_diberi;
     string item_terima;
-    int qty_terima;
+    int jumlah_terima;
 };
 
 struct Villager {
@@ -47,49 +47,49 @@ int main(){
     villagers[0].nama = "Asep";
     villagers[0].profesi = "Farmer";
     villagers[0].trades[0].item_diberi = "Wheat";
-    villagers[0].trades[0].qty_diberi = 1;
+    villagers[0].trades[0].jumlah_diberi = 1;
     villagers[0].trades[0].item_terima = "Emerald";
-    villagers[0].trades[0].qty_terima = 1;
+    villagers[0].trades[0].jumlah_terima = 1;
     villagers[0].trades[1].item_diberi = "Carrot";
-    villagers[0].trades[1].qty_diberi = 4;
+    villagers[0].trades[1].jumlah_diberi = 4;
     villagers[0].trades[1].item_terima = "Emerald";
-    villagers[0].trades[1].qty_terima = 1;
+    villagers[0].trades[1].jumlah_terima = 1;
     villagers[0].trades[2].item_diberi = "Emerald";
-    villagers[0].trades[2].qty_diberi = 1;
+    villagers[0].trades[2].jumlah_diberi = 1;
     villagers[0].trades[2].item_terima = "Bread";
-    villagers[0].trades[2].qty_terima = 8;
+    villagers[0].trades[2].jumlah_terima = 8;
     villagers[0].num_trade = 3;
 
     villagers[1].nama = "Durian";
     villagers[1].profesi = "Librarian";
     villagers[1].trades[0].item_diberi = "Book";
-    villagers[1].trades[0].qty_diberi = 1;
+    villagers[1].trades[0].jumlah_diberi = 1;
     villagers[1].trades[0].item_terima = "Emerald";
-    villagers[1].trades[0].qty_terima = 2;
+    villagers[1].trades[0].jumlah_terima = 2;
     villagers[1].trades[1].item_diberi = "Paper";
-    villagers[1].trades[1].qty_diberi = 10;
+    villagers[1].trades[1].jumlah_diberi = 10;
     villagers[1].trades[1].item_terima = "Emerald";
-    villagers[1].trades[1].qty_terima = 1;
+    villagers[1].trades[1].jumlah_terima = 1;
     villagers[1].trades[2].item_diberi = "Emerald";
-    villagers[1].trades[2].qty_diberi = 5;
+    villagers[1].trades[2].jumlah_diberi = 5;
     villagers[1].trades[2].item_terima = "Enchanted Book of Mending";
-    villagers[1].trades[2].qty_terima = 1;
+    villagers[1].trades[2].jumlah_terima = 1;
     villagers[1].num_trade = 3;
 
     villagers[2].nama = "Budi";
     villagers[2].profesi = "Blacksmith";
     villagers[2].trades[0].item_diberi = "Iron";
-    villagers[2].trades[0].qty_diberi = 8;
+    villagers[2].trades[0].jumlah_diberi = 8;
     villagers[2].trades[0].item_terima = "Emerald";
-    villagers[2].trades[0].qty_terima = 1;
+    villagers[2].trades[0].jumlah_terima = 1;
     villagers[2].trades[1].item_diberi = "Coal";
-    villagers[2].trades[1].qty_diberi = 16;
+    villagers[2].trades[1].jumlah_diberi = 16;
     villagers[2].trades[1].item_terima = "Emerald";
-    villagers[2].trades[1].qty_terima = 1;
+    villagers[2].trades[1].jumlah_terima = 1;
     villagers[2].trades[2].item_diberi = "Emerald";
-    villagers[2].trades[2].qty_diberi = 4;
+    villagers[2].trades[2].jumlah_diberi = 4;
     villagers[2].trades[2].item_terima = "Diamond Pickaxe";
-    villagers[2].trades[2].qty_terima = 1;
+    villagers[2].trades[2].jumlah_terima = 1;
     villagers[2].num_trade = 3;
 
     // Contoh inventory
@@ -141,9 +141,9 @@ int main(){
                                             cout << "   Trades:" << endl;
                                             for(int j = 0; j < villagers[i].num_trade; j++){
                                                 cout << "   " << j+1 << ". "
-                                                     << villagers[i].trades[j].qty_diberi<< "x "
+                                                     << villagers[i].trades[j].jumlah_diberi<< "x "
                                                      << villagers[i].trades[j].item_diberi << " for "
-                                                     << villagers[i].trades[j].qty_terima << "x "
+                                                     << villagers[i].trades[j].jumlah_terima << "x "
                                                      << villagers[i].trades[j].item_terima << endl;
                                             }
                                         }
@@ -171,23 +171,23 @@ int main(){
                                         if (jumlah_trade_baru > 0 && jumlah_trade_baru <= 5) {
                                             for(int t = 0; t < jumlah_trade_baru; t++) {
                                                 cout << "Masukkan trade " << t+1 << ": ";
-                                                int qty_diberikan, qty_diterima
+                                                int jumlah_diberikan, jumlah_diterima
                                                 ;
                                                 string beri_item, terima_item;
-                                                cout << "Masukkan qty barang yang diberikan: ";
-                                                cin >> qty_diberikan;
+                                                cout << "Masukkan jumlah barang yang diberikan: ";
+                                                cin >> jumlah_diberikan;
                                                 cin.ignore();
                                                 cout << "Masukkan nama barang yang diberikan: ";
                                                 getline(cin, beri_item);
-                                                cout << "Masukkan qty barang yang diterima: ";
-                                                cin >> qty_diterima
+                                                cout << "Masukkan jumlah barang yang diterima: ";
+                                                cin >> jumlah_diterima
                                                 ;
                                                 cin.ignore();
                                                 cout << "Masukkan nama barang yang diterima: ";
                                                 getline(cin, terima_item);
-                                                villagers[jumlah_villager].trades[t].qty_diberi = qty_diberikan;
+                                                villagers[jumlah_villager].trades[t].jumlah_diberi = jumlah_diberikan;
                                                 villagers[jumlah_villager].trades[t].item_diberi = beri_item;
-                                                villagers[jumlah_villager].trades[t].qty_terima = qty_diterima
+                                                villagers[jumlah_villager].trades[t].jumlah_terima = jumlah_diterima
                                                 ;
                                                 villagers[jumlah_villager].trades[t].item_terima = terima_item;
                                             }
@@ -238,21 +238,21 @@ int main(){
                                                 switch (pilihan_trade) {
                                                     case 1:
                                                         if (villagers[vill_index-1].num_trade < 5) {
-                                                            int beri_q, terima_q;
+                                                            int beri_jmlh, terima_q;
                                                             string beri_item, terima_item;
-                                                            cout << "Masukkan qty barang yang diberikan: ";
-                                                            cin >> beri_q;
+                                                            cout << "Masukkan jumlah barang yang diberikan: ";
+                                                            cin >> beri_jmlh;
                                                             cin.ignore();
                                                             cout << "Masukkan nama barang yang diberikan: ";
                                                             getline(cin, beri_item);
-                                                            cout << "Masukkan qty barang yang diterima: ";
+                                                            cout << "Masukkan jumlah barang yang diterima: ";
                                                             cin >> terima_q;
                                                             cin.ignore();
                                                             cout << "Masukkan nama barang yang diterima: ";
                                                             getline(cin, terima_item);
-                                                            villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].qty_diberi = beri_q;
+                                                            villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].jumlah_diberi = beri_jmlh;
                                                             villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].item_diberi = beri_item;
-                                                            villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].qty_terima = terima_q;
+                                                            villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].jumlah_terima = terima_q;
                                                             villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].item_terima = terima_item;
                                                             villagers[vill_index-1].num_trade++;
                                                             cout << "Trade berhasil ditambahkan." << endl;
@@ -266,21 +266,21 @@ int main(){
                                                             int trade_id;
                                                             cin >> trade_id;
                                                             if (trade_id >= 1 && trade_id <= villagers[vill_index-1].num_trade) {
-                                                                int beri_q, terima_q;
+                                                                int beri_jmlh, terima_q;
                                                                 string beri_item, terima_item;
-                                                                cout << "Masukkan qty barang yang diberikan: ";
-                                                                cin >> beri_q;
+                                                                cout << "Masukkan jumlah barang yang diberikan: ";
+                                                                cin >> beri_jmlh;
                                                                 cin.ignore();
                                                                 cout << "Masukkan nama barang yang diberikan: ";
                                                                 getline(cin, beri_item);
-                                                                cout << "Masukkan qty barang yang diterima: ";
+                                                                cout << "Masukkan jumlah barang yang diterima: ";
                                                                 cin >> terima_q;
                                                                 cin.ignore();
                                                                 cout << "Masukkan nama barang yang diterima: ";
                                                                 getline(cin, terima_item);
-                                                                villagers[vill_index-1].trades[trade_id-1].qty_diberi = beri_q;
+                                                                villagers[vill_index-1].trades[trade_id-1].jumlah_diberi = beri_jmlh;
                                                                 villagers[vill_index-1].trades[trade_id-1].item_diberi = beri_item;
-                                                                villagers[vill_index-1].trades[trade_id-1].qty_terima = terima_q;
+                                                                villagers[vill_index-1].trades[trade_id-1].jumlah_terima = terima_q;
                                                                 villagers[vill_index-1].trades[trade_id-1].item_terima = terima_item;
                                                                 cout << "Trade berhasil diubah." << endl;
                                                             } else {
@@ -351,9 +351,9 @@ int main(){
                                             cout << "   Trades:" << endl;
                                             for(int j = 0; j < villagers[i].num_trade; j++){
                                                 cout << "   " << j+1 << ". "
-                                                     << villagers[i].trades[j].qty_diberi << "x "
+                                                     << villagers[i].trades[j].jumlah_diberi << "x "
                                                      << villagers[i].trades[j].item_diberi << " for "
-                                                     << villagers[i].trades[j].qty_terima << "x "
+                                                     << villagers[i].trades[j].jumlah_terima << "x "
                                                      << villagers[i].trades[j].item_terima << endl;
                                             }
                                         }
@@ -365,8 +365,8 @@ int main(){
                                             for(int t = 0; t < villagers[vill_survival_trade-1].num_trade; t++){
                                                 auto &tr = villagers[vill_survival_trade-1].trades[t];
                                                 cout << "   " << t+1 << ". "
-                                                     << tr.qty_diberi << "x " << tr.item_diberi
-                                                     << " for " << tr.qty_terima << "x " << tr.item_terima << endl;
+                                                     << tr.jumlah_diberi << "x " << tr.item_diberi
+                                                     << " for " << tr.jumlah_terima << "x " << tr.item_terima << endl;
                                             }
                                             // trade selection
                                             int pilihan_trade;
@@ -375,22 +375,22 @@ int main(){
                                             if(pilihan_trade >= 1 && pilihan_trade <= villagers[vill_survival_trade-1].num_trade){
                                                 Trade &tr = villagers[vill_survival_trade-1].trades[pilihan_trade-1];
                                                 // check inventory for give item
-                                                int idxGive = -1, idxRecv = -1;
+                                                int idx_dberi = -1, idx_dterima = -1;
                                                 for(int k=0;k<jumlah_inventory;k++){
-                                                    if(inventory[k].item == tr.item_diberi) idxGive = k;
-                                                    if(inventory[k].item == tr.item_terima) idxRecv = k;
+                                                    if(inventory[k].item == tr.item_diberi) idx_dberi = k;
+                                                    if(inventory[k].item == tr.item_terima) idx_dterima = k;
                                                 }
-                                                if(idxGive != -1 && inventory[idxGive].jumlah >= tr.qty_diberi){
-                                                    inventory[idxGive].jumlah -= tr.qty_diberi;
-                                                    if(idxRecv != -1){
-                                                        inventory[idxRecv].jumlah += tr.qty_terima;
+                                                if(idx_dberi != -1 && inventory[idx_dberi].jumlah >= tr.jumlah_diberi){
+                                                    inventory[idx_dberi].jumlah -= tr.jumlah_diberi;
+                                                    if(idx_dterima != -1){
+                                                        inventory[idx_dterima].jumlah += tr.jumlah_terima;
                                                     } else if(jumlah_inventory < MAX_INVENTORY){
                                                         inventory[jumlah_inventory].item = tr.item_terima;
-                                                        inventory[jumlah_inventory].jumlah = tr.qty_terima;
+                                                        inventory[jumlah_inventory].jumlah = tr.jumlah_terima;
                                                         jumlah_inventory++;
                                                     }
-                                                    cout << "Trade sukses: " << tr.qty_diberi << "x " << tr.item_diberi
-                                                         << " ditukar menjadi " << tr.qty_terima << "x " << tr.item_terima << "\n";
+                                                    cout << "Trade sukses: " << tr.jumlah_diberi << "x " << tr.item_diberi
+                                                         << " ditukar menjadi " << tr.jumlah_terima << "x " << tr.item_terima << "\n";
                                                 } else {
                                                     cout << "Anda tidak punya cukup " << tr.item_diberi << " untuk melakukan trade." << endl;
                                                 }
