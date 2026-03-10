@@ -43,6 +43,7 @@ int main(){
     daftar_akun[0] = {"Adrian", "032"}; //akun admin
     daftar_akun[1] = {"Duriann", "67"}; // akun user
 
+    // 
     villagers[0].nama = "Asep";
     villagers[0].profesi = "Farmer";
     villagers[0].trades[0].item_diberi = "Wheat";
@@ -191,8 +192,8 @@ int main(){
                                     if (jumlah_villager > 0) {
                                         cout << "> Masukkan nomor villager yang ingin dihapus [1-" << jumlah_villager << "]: ";
                                         int index; cin >> index;
-                                        if (index >= 1 && index <= jumlah_villager) {
-                                            for(int i = index-1; i < jumlah_villager-1; i++){
+                                        if (index >= 1 && index <= jumlah_villager) { // jika valid, geser semua villager setelah index ke kiri
+                                            for(int i = index-1; i < jumlah_villager-1; i++){  //
                                                 villagers[i] = villagers[i+1];
                                             }
                                             jumlah_villager--;
@@ -223,7 +224,7 @@ int main(){
                                                 cout << "> Pilihan: "; cin >> pilihan_trade;
                                                 switch (pilihan_trade) {
                                                     case 1:
-                                                        if (villagers[vill_index-1].num_trade < 5) {
+                                                        if (villagers[vill_index-1].num_trade < 5) { //
                                                             int beri_jmlh, terima_q;
                                                             string beri_item, terima_item;
                                                             cout << "> Masukkan jumlah barang yang diberikan: "; cin >> beri_jmlh; cin.ignore();
@@ -352,13 +353,13 @@ int main(){
                                                      << tr.jumlah_diberi << "x " << tr.item_diberi
                                                      << " for " << tr.jumlah_terima << "x " << tr.item_terima << endl;
                                             }
-                                            // trade selection
+                                            // trade program
                                             int pilihan_trade;
                                             cout << "> Pilih trade yang ingin dilakukan [1-" << villagers[vill_survival_trade-1].num_trade << "]: ";
                                             cin >> pilihan_trade;
                                             if(pilihan_trade >= 1 && pilihan_trade <= villagers[vill_survival_trade-1].num_trade){
                                                 Trade &tr = villagers[vill_survival_trade-1].trades[pilihan_trade-1];
-                                                // check inventory for give item
+                                                // melihat inventori dari item yang diberi
                                                 int idx_dberi = -1, idx_dterima = -1;
                                                 for(int k=0;k<jumlah_inventory;k++){
                                                     if(inventory[k].item == tr.item_diberi) idx_dberi = k;
