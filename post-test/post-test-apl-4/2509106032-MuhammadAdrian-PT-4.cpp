@@ -25,7 +25,7 @@ struct Inventory {
     int jumlah;
 };
 
-const int MAX_AKUN = 10;
+const int MAX_AKUN = 5;
 Akun daftar_akun[MAX_AKUN];
 int jumlah_akun;
 
