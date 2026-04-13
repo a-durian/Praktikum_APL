@@ -143,11 +143,12 @@ void urutkanProfesi(Villager arr[], int n) {
 void menuTrade(){
     int vill_index;
     if (jumlah_villager > 0) {
-        cout << "> Pilih nomor villager untuk di-manage trades [1-" << jumlah_villager << "]: ";
+        cout << " [>] Pilih nomor villager untuk di-manage trades [1-" << jumlah_villager << "]: ";
         cin >> vill_index;
         if (vill_index >= 1 && vill_index <= jumlah_villager) {
             int pilihan_trade;
             do {
+                cout << endl;
                 cout << ">>>========================================<<<" << endl;
                 cout << ">>> Manage Trades untuk " << villagers[vill_index-1].nama << ": <<<" << endl;
                 cout << ">>>========================================<<<" << endl;
@@ -156,25 +157,25 @@ void menuTrade(){
                 cout << "||| 3. Hapus Trade                         <<<" << endl;
                 cout << "||| 4. Kembali                             <<<" << endl;
                 cout << ">>>========================================<<<" << endl;
-                cout << "> Pilihan: "; cin >> pilihan_trade;
+                cout << " [>] Pilihan: "; cin >> pilihan_trade;
                 switch (pilihan_trade) {
                 case 1:
                     if (villagers[vill_index-1].num_trade < 5) { //
                         int beri_jmlh, terima_q;
                         string beri_item, terima_item;
-                        cout << "> Masukkan jumlah barang yang diberikan: "; cin >> beri_jmlh; cin.ignore();
-                        cout << "> Masukkan nama barang yang diberikan: "; getline(cin, beri_item);
-                        cout << "> Masukkan jumlah barang yang diterima: "; cin >> terima_q; cin.ignore();
-                        cout << "> Masukkan nama barang yang diterima: "; getline(cin, terima_item);
+                        cout << " [>] Masukkan jumlah barang yang diberikan: "; cin >> beri_jmlh; cin.ignore();
+                        cout << " [>] Masukkan nama barang yang diberikan: "; getline(cin, beri_item);
+                        cout << " [>] Masukkan jumlah barang yang diterima: "; cin >> terima_q; cin.ignore();
+                        cout << " [>] Masukkan nama barang yang diterima: "; getline(cin, terima_item);
                         
                         villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].jumlah_diberi = beri_jmlh;
                         villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].item_diberi = beri_item;
                         villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].jumlah_terima = terima_q;
                         villagers[vill_index-1].trades[villagers[vill_index-1].num_trade].item_terima = terima_item;
                         villagers[vill_index-1].num_trade++;
-                        cout << "^ Trade berhasil ditambahkan." << endl;
+                        cout << " [^] Trade berhasil ditambahkan." << endl;
                     } else {
-                        cout << "! Maksimal 5 trades per villager. !" << endl;
+                        cout << " [!] Maksimal 5 trades per villager." << endl;
                     }
                     break;
                 case 2:
@@ -185,26 +186,26 @@ void menuTrade(){
                         if (trade_id >= 1 && trade_id <= villagers[vill_index-1].num_trade) {
                             int beri_jmlh, terima_q;
                             string beri_item, terima_item;
-                            cout << "> Masukkan jumlah barang yang diberikan: ";cin >> beri_jmlh;cin.ignore();
-                            cout << "> Masukkan nama barang yang diberikan: ";getline(cin, beri_item);
-                            cout << "> Masukkan jumlah barang yang diterima: ";cin >> terima_q;cin.ignore();
-                            cout << "> Masukkan nama barang yang diterima: ";getline(cin, terima_item);
+                            cout << " [>] Masukkan jumlah barang yang diberikan: ";cin >> beri_jmlh;cin.ignore();
+                            cout << " [>] Masukkan nama barang yang diberikan: ";getline(cin, beri_item);
+                            cout << " [>] Masukkan jumlah barang yang diterima: ";cin >> terima_q;cin.ignore();
+                            cout << " [>] Masukkan nama barang yang diterima: ";getline(cin, terima_item);
                             
                             villagers[vill_index-1].trades[trade_id-1].jumlah_diberi = beri_jmlh;
                             villagers[vill_index-1].trades[trade_id-1].item_diberi = beri_item;
                             villagers[vill_index-1].trades[trade_id-1].jumlah_terima = terima_q;
                             villagers[vill_index-1].trades[trade_id-1].item_terima = terima_item;
-                            cout << "^ Trade berhasil diubah." << endl;
+                            cout << " [^] Trade berhasil diubah." << endl;
                         } else {
-                            cout << "!! Nomor trade tidak valid. !!" << endl;
+                            cout << " [!] Nomor trade tidak valid. " << endl;
                         }
                     } else {
-                        cout << "! Tidak ada trade untuk diedit. !" << endl;
+                        cout << " [!] Tidak ada trade untuk diedit. " << endl;
                     }
                     break;
                 case 3:
                     if (villagers[vill_index-1].num_trade > 0) {
-                        cout << "> Pilih nomor trade untuk hapus [1-" << villagers[vill_index-1].num_trade << "]: ";
+                        cout << " [>] Pilih nomor trade untuk hapus [1-" << villagers[vill_index-1].num_trade << "]: ";
                         int trade_id;
                         cin >> trade_id;
                         if (trade_id >= 1 && trade_id <= villagers[vill_index-1].num_trade) {
@@ -212,37 +213,38 @@ void menuTrade(){
                                 villagers[vill_index-1].trades[k] = villagers[vill_index-1].trades[k+1];
                             }
                             villagers[vill_index-1].num_trade--;
-                            cout << "^ Trade berhasil dihapus." << endl;
+                            cout << " [^] Trade berhasil dihapus." << endl;
                         } else {
-                            cout << "!! Nomor trade tidak valid. !!" << endl;
+                            cout << " [!] Nomor trade tidak valid. " << endl;
                         }
                     } else {
-                        cout << "!! Tidak ada trade untuk dihapus. !!" << endl;
+                        cout << " [!] Tidak ada trade untuk dihapus. " << endl;
                     }
                     break;
                 case 4:
-                    cout << "^ Kembali ke menu admin.." << endl;
+                    cout << " {^} Kembali ke menu admin.." << endl;
                     break;
                 default:
-                    cout << "!! Pilihan tidak valid. !!" << endl;
+                    cout << " [!] Pilihan tidak valid." << endl;
                 }
             } while (pilihan_trade != 4);
         } else {
-            cout << "!! Nomor villager tidak valid. !!" << endl;
+            cout << " [!] Nomor villager tidak valid. " << endl;
         }
     } else {
-        cout << "!! Tidak ada Villager untuk manage trades.!!" << endl;
+        cout << " [!] Tidak ada Villager untuk manage trades.!!" << endl;
     }
 
 }
 
 void tampilkanJumlah(int *jml_villager){
-    cout << "^ Total villager saat ini: " << *jml_villager << endl;
+    cout << endl << " [^] Total villager saat ini: " << *jml_villager << endl;
 }
 
 // Misahin dari menu creative
 void tampilkanVillager() {
     if (jumlah_villager > 0) {
+        cout << endl;
         cout << ">>>>>=================================<<<<<" << endl;
         cout << ">>>>>         Daftar Villager:        <<<<<" << endl;
         cout << ">>>>>=================================<<<<<" << endl;
@@ -260,7 +262,7 @@ void tampilkanVillager() {
         cout << ">>>>>=================================<<<<<" << endl;
         tampilkanJumlah(&jumlah_villager); 
     } else {
-        cout << "!! Tidak ada Villager yang tersedia. !!" << endl;
+        cout << " [!] Tidak ada Villager yang tersedia. " << endl;
     }
 }
 
@@ -268,6 +270,7 @@ void tampilkanVillager() {
 void menuSorting() {
     int pilihan_sort;
     do {
+        cout << endl;
         cout << ">>>======================================<<<" << endl;
         cout << ">>>         MENU SORTING VILLAGER        <<<" << endl;
         cout << ">>>======================================<<<" << endl;
@@ -276,29 +279,29 @@ void menuSorting() {
         cout << "||| 3. Urutkan Profesi (A -> Z)          |||" << endl;
         cout << "||| 0. Kembali ke menu Creative          |||" << endl;
         cout << ">>>======================================<<<" << endl;
-        cout << "> Pilihan: "; cin >> pilihan_sort;
+        cout << " [>] Pilihan: "; cin >> pilihan_sort;
 
         switch (pilihan_sort) {
         case 1:
             urutkanNama(villagers, jumlah_villager);
-            cout << "^ Villager diurutkan berdasarkan Nama:" << endl;
+            cout << " [^] Villager diurutkan berdasarkan Nama:" << endl;
             tampilkanVillager();
             break;
         case 2:
             urutkanTrade(villagers, jumlah_villager);
-            cout << "^ Villager diurutkan berdasarkan Jumlah Trade (terbanyak):" << endl;
+            cout << " [^] Villager diurutkan berdasarkan Jumlah Trade (terbanyak):" << endl;
             tampilkanVillager();
             break;
         case 3:
             urutkanProfesi(villagers, jumlah_villager);
-            cout << "^ Villager diurutkan berdasarkan Profesi:" << endl;
+            cout << " [^] Villager diurutkan berdasarkan Profesi:" << endl;
             tampilkanVillager();
             break;
         case 0:
-            cout << "^ Kembali ke menu Creative.." << endl;
+            cout << " [^] Kembali ke menu Creative.." << endl;
             break;
         default:
-            cout << "!! Pilihan tidak valid. !!" << endl;
+            cout << " [!] Pilihan tidak valid." << endl;
         }
     } while (pilihan_sort != 0);
 }
@@ -306,8 +309,9 @@ void menuSorting() {
 void menuCreative(){
     dataVillager(jumlah_akun, jumlah_villager, jumlah_inventory);
     int pilihan_menu_admin;
-    cout << "^ Mode Creative aktif!" << endl << endl;
+    cout << " [^] Mode Creative aktif!" << endl << endl;
     do {
+        cout << endl;
         cout << ">>>==============================<<<" << endl;
         cout << ">>>      Menu mode Creative:     <<<" << endl;
         cout << ">>>==============================<<<" << endl;
@@ -318,7 +322,7 @@ void menuCreative(){
         cout << "||| 5. Sorting Villager          |||" << endl;
         cout << "||| 0. Keluar                    |||" << endl;
         cout << ">>>==============================<<<" << endl;
-        cout << "> Pilihan: "; cin >> pilihan_menu_admin;
+        cout << " [>] Pilihan: "; cin >> pilihan_menu_admin;
         switch (pilihan_menu_admin) {
         case 1:
             tampilkanVillager();
@@ -326,24 +330,24 @@ void menuCreative(){
         case 2:
             if (jumlah_villager < MAX_VILLAGER) {
                 string nama_baru, profesi_baru, trade_baru;
-                cout << "> Masukkan nama villager baru: "; cin.ignore(); getline(cin, nama_baru);
-                cout << "> Masukkan profesi villager: "; getline(cin, profesi_baru);
+                cout << " [>] Masukkan nama villager baru: "; cin.ignore(); getline(cin, nama_baru);
+                cout << " [>] Masukkan profesi villager: "; getline(cin, profesi_baru);
 
                 villagers[jumlah_villager].nama = nama_baru;
                 villagers[jumlah_villager].profesi = profesi_baru;
                 villagers[jumlah_villager].num_trade = 0;
                 
                 int jumlah_trade_baru;
-                cout << "> Berapa trades awal yang ingin ditambahkan [1-5]? "; cin >> jumlah_trade_baru;
+                cout << " [>] Berapa trades awal yang ingin ditambahkan [1-5]? "; cin >> jumlah_trade_baru;
                 if (jumlah_trade_baru > 0 && jumlah_trade_baru <= 5) {
                     for(int t = 0; t < jumlah_trade_baru; t++) {
                         cout << "> Masukkan trade " << t+1 << ": ";
                         int jumlah_diberikan, jumlah_diterima;
                         string beri_item, terima_item;
-                        cout << "> Masukkan jumlah barang yang diberikan: "; cin >> jumlah_diberikan; cin.ignore();
-                        cout << "> Masukkan nama barang yang diberikan: ";getline(cin, beri_item);
-                        cout << "> Masukkan jumlah barang yang diterima: ";cin >> jumlah_diterima;cin.ignore();
-                        cout << "> Masukkan nama barang yang diterima: "; getline(cin, terima_item);
+                        cout << " [>] Masukkan jumlah barang yang diberikan: "; cin >> jumlah_diberikan; cin.ignore();
+                        cout << " [>] Masukkan nama barang yang diberikan: ";getline(cin, beri_item);
+                        cout << " [>] Masukkan jumlah barang yang diterima: ";cin >> jumlah_diterima;cin.ignore();
+                        cout << " [>] Masukkan nama barang yang diterima: "; getline(cin, terima_item);
                         villagers[jumlah_villager].trades[t].jumlah_diberi = jumlah_diberikan;
                         villagers[jumlah_villager].trades[t].item_diberi = beri_item;
                         villagers[jumlah_villager].trades[t].jumlah_terima = jumlah_diterima;
@@ -351,30 +355,31 @@ void menuCreative(){
                     }
                     villagers[jumlah_villager].num_trade = jumlah_trade_baru;
                 } else {
-                    cout << "!! Jumlah trade tidak valid. Villager ditambahkan tanpa trade. !!" << endl;
+                    cout << " [!] Jumlah trade tidak valid. Villager ditambahkan tanpa trade. " << endl;
                 }
                 
                 jumlah_villager++;
-                cout << "^ Villager baru berhasil ditambahkan!" << endl;
+                cout << " [^] Villager baru berhasil ditambahkan!" << endl;
             } else {
-                cout << "!! Maksimal " << MAX_VILLAGER << " villagers sudah tercapai. !!" << endl;
+                cout << " [!] Maksimal " << MAX_VILLAGER << " villagers sudah tercapai. " << endl;
             }
             break;
         case 3:
+            tampilkanVillager();
             if (jumlah_villager > 0) {
-                cout << "> Masukkan nomor villager yang ingin dihapus [1-" << jumlah_villager << "]: ";
+                cout << " [>] Masukkan nomor villager yang ingin dihapus [1-" << jumlah_villager << "]: ";
                 int index; cin >> index;
                 if (index >= 1 && index <= jumlah_villager) { // jika valid, geser semua villager setelah index ke kiri
                     for(int i = index-1; i < jumlah_villager-1; i++){  //
                         villagers[i] = villagers[i+1];
                     }
                     jumlah_villager--;
-                    cout << "^ Villager berhasil dihapus." << endl;
+                    cout << " [^] Villager berhasil dihapus." << endl;
                 } else {
-                    cout << "!! Nomor villager tidak valid. !!" << endl;
+                    cout << " [!] Nomor villager tidak valid. " << endl;
                 }
             } else {
-                cout << "!! Tidak ada Villager yang tersedia untuk dihapus. !!" << endl;
+                cout << " [!] Tidak ada Villager yang tersedia untuk dihapus. " << endl;
             }
             break;
         case 4:
@@ -384,10 +389,10 @@ void menuCreative(){
             menuSorting();
             break;
         case 0:
-            cout << "! Program dihentikan. !" << endl;
+            cout << " [i] Program dihentikan." << endl;
             break;
         default:
-            cout << "!! Pilihan tidak valid. Silahkan coba lagi. !!" << endl;
+            cout << " [!] Pilihan tidak valid. Silahkan coba lagi." << endl;
         }
     } while(pilihan_menu_admin != 0);
 }
@@ -403,7 +408,7 @@ void menuSurvival(){
         cout << "||| 3. Menu Sorting                    |||" << endl;
         cout << "||| 0. Keluar                          |||" << endl;
         cout << ">>>====================================<<<" << endl;
-        cout << "> Pilihan: ";
+        cout << " [>] Pilihan: ";
         cin >> pilihan_menu_user;
 
         switch (pilihan_menu_user) {
@@ -424,7 +429,7 @@ void menuSurvival(){
                     }
                 }
                 cout << ">>>====================================<<<" << endl;
-                cout << "> Pilih Villager untuk melakukan trade [1-" << jumlah_villager << " atau 0 untuk kembali]: ";
+                cout << " [>] Pilih Villager untuk melakukan trade [1-" << jumlah_villager << " atau 0 untuk kembali]: ";
                 cin >> vill_survival_trade;
                 if (vill_survival_trade >= 1 && vill_survival_trade <= jumlah_villager) {
                     Villager* vill_ptr = &villagers[vill_survival_trade-1];
@@ -440,7 +445,7 @@ void menuSurvival(){
                     }
                     // trade program
                     int pilihan_trade;
-                    cout << "> Pilih trade yang ingin dilakukan [1-" << vill_ptr->num_trade << "]: ";
+                    cout << " [>] Pilih trade yang ingin dilakukan [1-" << vill_ptr->num_trade << "]: ";
                     cin >> pilihan_trade;
                     if(pilihan_trade >= 1 && pilihan_trade <= vill_ptr->num_trade){
                         Trade &tr = vill_ptr->trades[pilihan_trade-1];
@@ -459,21 +464,21 @@ void menuSurvival(){
                                 inventory[jumlah_inventory].jumlah = tr.jumlah_terima;
                                 jumlah_inventory++;
                             }
-                            cout << "^ Trade sukses: " << tr.jumlah_diberi << "x " << tr.item_diberi
+                            cout << " [^] Trade sukses: " << tr.jumlah_diberi << "x " << tr.item_diberi
                                     << " ditukar menjadi " << tr.jumlah_terima << "x " << tr.item_terima << "\n";
                         } else {
-                            cout << "!! Anda tidak punya cukup " << tr.item_diberi << " untuk melakukan trade. !!" << endl;
+                            cout << " [!] Anda tidak punya cukup " << tr.item_diberi << " untuk melakukan trade." << endl;
                         }
                     } else {
-                        cout << "!! Pilihan trade tidak valid. !!" << endl;
+                        cout << " [!] Pilihan trade tidak valid. !!" << endl;
                     }
                 } else if (vill_survival_trade == 0) {
-                    cout << "! Kembali ke menu utama.. !" << endl;
+                    cout << " [!] Kembali ke menu utama.. " << endl;
                 } else {
-                    cout << "!! Pilihan tidak valid. !!" << endl;
+                    cout << " [!] Pilihan tidak valid. " << endl;
                 }
             } else {
-                cout << "!! Tidak ada Villager yang tersedia. !!" << endl;
+                cout << " [!] Tidak ada Villager yang tersedia. " << endl;
             }
             break;
         case 2:
@@ -485,27 +490,27 @@ void menuSurvival(){
                     cout << i+1 << ". " << inventory[i].item << " - Jumlah: " << inventory[i].jumlah << endl;
                 }
             } else {
-                cout << "! Inventory kosong. !" << endl;
+                cout << " [!] Inventory kosong. " << endl;
             }
             break;
         case 3:
             menuSorting();
             break;
         case 0:
-            cout << "^ Keluar dari menu Survival." << endl;
-            cout << "!! Program dihentikan. !!" << endl;
+            cout << " [^] Keluar dari menu Survival." << endl;
+            cout << " [!] Program dihentikan." << endl;
             break;
         default:
-            cout << "!! Pilihan tidak valid. Silahkan coba lagi. !!" << endl;
+            cout << " [!] Pilihan tidak valid. Silahkan coba lagi. " << endl;
         }
     } while(pilihan_menu_user != 0);
 }
 
 int login(int kesempatan){
-    cout << "^ Silahkan login terlebih dahulu.." << endl;
+    cout << " [^] Silahkan login terlebih dahulu.." << endl;
     while(kesempatan > 0){
-        cout << "> Masukkan Username: "; cin >> username;
-        cout << "> Masukkan Password: "; cin >> password;
+        cout << " [>] Masukkan Username: "; cin >> username;
+        cout << " [>] Masukkan Password: "; cin >> password;
         bool login_berhasil = false;
         for(int i = 0; i < jumlah_akun; i++){
             if(username == daftar_akun[i].username && password == daftar_akun[i].password){
@@ -521,10 +526,10 @@ int login(int kesempatan){
         if(!login_berhasil){
             kesempatan--;
             if(kesempatan > 0){
-                cout << "!! Username atau Password salah! Kesempatan tersisa: " << kesempatan << "x !!" << endl;
+                cout << " [!] Username atau Password salah! Kesempatan tersisa: " << kesempatan << "x" << endl;
                 return login(kesempatan);
             } else {
-                cout << "!! Kesempatan habis. Program dihentikan secara paksa !!" << endl;
+                cout << " [!] Kesempatan habis. Program dihentikan secara paksa " << endl;
                 return 0;
             }
         }
@@ -537,17 +542,17 @@ int login(int kesempatan){
 int registerAkun(int kesempatan2){
     if(jumlah_akun < MAX_AKUN){
         cout << ">>> Silahkan buat akun dengan memasukkan username dan password yang anda inginkan: <<<" << endl;
-        cout << "> Masukkan Username: "; cin >> username_baru;
-        cout << "> Masukkan Password: "; cin >> password_baru;
+        cout << " [>] Masukkan Username: "; cin >> username_baru;
+        cout << " [>] Masukkan Password: "; cin >> password_baru;
 
         //Simpan ke array
         daftar_akun[jumlah_akun].username = username_baru;
         daftar_akun[jumlah_akun].password = password_baru;
         jumlah_akun++;
-        cout << "^ Akun berhasil dibuat!" << endl;
+        cout << " [^] Akun berhasil dibuat!" << endl;
         login(3);
     }else {
-        cout << "!! Maaf, jumlah akun sudah mencapai batas maksimal. !!" << endl;
+        cout << " [!] Maaf, jumlah akun sudah mencapai batas maksimal." << endl;
     }
     return 0;
 }
@@ -557,7 +562,7 @@ int main(){
     int kesempatan_main = 3;
     bool logged_in = false;
     while(kesempatan_main > 0 && !logged_in){
-        cout << endl << "> Apakah anda sudah punya akun?[y/n]: " << endl; cin >> yorn;
+        cout << endl << " [>] Apakah anda sudah punya akun?[y/n]: " << endl; cin >> yorn;
         if (yorn == "y" || yorn == "Y"){
             if(login(3) == 1){
                 logged_in = true;
@@ -568,10 +573,10 @@ int main(){
         } else {
             kesempatan_main--;
             if(kesempatan_main == 0){
-                cout << "!! Kesempatan habis. Program dihentikan. !!" << endl;
+                cout << " [!] Kesempatan habis. Program dihentikan. " << endl;
             }else {
-                cout << "!! Input salah. Silahkan coba lagi. !!" << endl; 
-                cout << "! Kesempatan tersisa: " << kesempatan_main << "x !" << endl;
+                cout << " [!] Input salah. Silahkan coba lagi. " << endl; 
+                cout << " [!] Kesempatan tersisa: " << kesempatan_main << "x " << endl;
             }
         }
     }
