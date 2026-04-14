@@ -221,13 +221,13 @@ void menuTrade(){
                         cout << " [!] Tidak ada trade untuk dihapus. " << endl;
                     }
                     break;
-                case 4:
+                case 0:
                     cout << " {^} Kembali ke menu admin.." << endl;
                     break;
                 default:
                     cout << " [!] Pilihan tidak valid." << endl;
                 }
-            } while (pilihan_trade != 4);
+            } while (pilihan_trade != 0);
         } else {
             cout << " [!] Nomor villager tidak valid. " << endl;
         }
@@ -266,7 +266,7 @@ void tampilkanVillager() {
     }
 }
 
-// menu sorting baru di menucreative
+// menu sorting baruu
 void menuSorting() {
     int pilihan_sort;
     do {
