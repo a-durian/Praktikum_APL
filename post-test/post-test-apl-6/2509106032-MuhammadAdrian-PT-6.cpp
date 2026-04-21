@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 struct Akun {
@@ -136,6 +137,107 @@ void urutkanProfesi(Villager arr[], int n) {
             }
         }
     }
+}
+
+// NEWWWWW NEWWW
+void linearSearchNama(Villager* arr, int* n) {
+    string keyword;
+    cout << " [>] Masukkan nama Villager yang dicari: ";
+    cin.ignore();
+    getline(cin, keyword);
+ 
+    bool ditemukan = false;
+    for (int i = 0; i < *n; i++) { // melakukan iterasi satu per satu dari awal
+        if (arr[i].nama == keyword) {// bandingkan nama dengan keywordnya
+            cout << " [^] Villager ditemukan di index ke-" << i << "!" << endl;
+            cout << "     Nama    : " << arr[i].nama << endl;
+            cout << "     Profesi : " << arr[i].profesi << endl;
+            cout << "     Trades  :" << endl;
+            for (int j = 0; j < arr[i].num_trade; j++) {
+                cout << "       " << j+1 << ". "
+                     << arr[i].trades[j].jumlah_diberi << "x " << arr[i].trades[j].item_diberi
+                     << " for "
+                     << arr[i].trades[j].jumlah_terima << "x " << arr[i].trades[j].item_terima << endl;
+            }
+            ditemukan = true;
+            break; // berhenti setelah ditemukan pertama kali
+        }
+    }
+    if (!ditemukan) {
+        cout << " [!] Villager dengan nama \"" << keyword << "\" tidak ditemukan." << endl;
+    }
+}
+
+void jumpSearchJumlah(Inventory* arr, int* n) {
+    int target;
+    cout << " [>] Masukkan jumlah item inventory yang dicari: ";
+    cin >> target;
+ 
+    // menguruutkan sementara salinan inventory berdasarkan jumlah (syarat Jump Search)
+    Inventory temp[MAX_INVENTORY];
+    for (int i = 0; i < *n; i++) temp[i] = arr[i];// menyalin ke array sementara
+    for (int i = 0; i < *n - 1; i++) { // bubble sort ascending
+        for (int j = 0; j < *n - i - 1; j++) {
+            if (temp[j].jumlah > temp[j+1].jumlah) swap(temp[j], temp[j+1]);
+        }
+    }
+ 
+    //proses Jump search pada array sementara yang sudah terurut
+    int step = (int)sqrt((double)*n);  // ukuran lompatan = sqrt(n)
+    int prev = 0;
+ 
+    //  selama blok < target, lompat per blok
+    while (temp[min(step, *n) - 1].jumlah < target) {
+        prev = step;
+        step += (int)sqrt((double)*n);
+        if (prev >= *n) { // sudah batas array woy
+            cout << " [!] Item dengan jumlah " << target << " tidak ditemukan." << endl;
+            return;
+        }
+    }
+ 
+    //Linear search di dalam blok yang ditemukan
+    bool ditemukan = false;
+    while (temp[prev].jumlah <= target && prev < *n) {
+        if (temp[prev].jumlah == target) { 
+            cout << " [^] Item ditemukan: " << temp[prev].item
+                 << " - Jumlah: " << temp[prev].jumlah << endl;
+            ditemukan = true;
+        }
+        prev++;
+    }
+    if (!ditemukan) {
+        cout << " [!] Item dengan jumlah " << target << " tidak ditemukan." << endl;
+    }
+}
+
+void menuSearching() {
+    int pilihan_search;
+    do {
+        cout << endl;
+        cout << ">>>==========================================<<<" << endl;
+        cout << ">>>            MENU SEARCHING                <<<" << endl;
+        cout << ">>>==========================================<<<" << endl;
+        cout << "||| 1. Cari Villager by Nama                 |||" << endl;
+        cout << "||| 2. Cari Inventory by Jumlah              |||" << endl;
+        cout << "||| 0. Kembali                               |||" << endl;
+        cout << ">>>==========================================<<<" << endl;
+        cout << " [>] Pilihan: "; cin >> pilihan_search;
+ 
+        switch (pilihan_search) {
+        case 1:
+            linearSearchNama(villagers, &jumlah_villager);
+            break;
+        case 2:
+            jumpSearchJumlah(inventory, &jumlah_inventory);
+            break;
+        case 0:
+            cout << " [^] Kembali ke menu sebelumnya.." << endl;
+            break;
+        default:
+            cout << " [!] Pilihan tidak valid." << endl;
+        }
+    } while (pilihan_search != 0);
 }
 
 void menuTrade(){
@@ -317,6 +419,7 @@ void menuCreative(){
         cout << "||| 3. Hapus Villager            |||" << endl;
         cout << "||| 4. Manajemen Trade           |||" << endl;
         cout << "||| 5. Sorting Villager          |||" << endl;
+        cout << "||| 6. Searching                 |||" << endl;
         cout << "||| 0. Keluar                    |||" << endl;
         cout << ">>>==============================<<<" << endl;
         cout << " [>] Pilihan: "; cin >> pilihan_menu_admin;
@@ -385,6 +488,9 @@ void menuCreative(){
         case 5:
             menuSorting();
             break;
+        case 6:
+            menuSearching();
+            break;
         case 0:
             cout << " [i] Program dihentikan." << endl;
             break;
@@ -403,6 +509,7 @@ void menuSurvival(){
         cout << "||| 1. Tampilkan daftar Villager       |||" << endl;
         cout << "||| 2. Lihat Inventory                 |||" << endl;
         cout << "||| 3. Menu Sorting                    |||" << endl;
+        cout << "||| 4. Searching                       |||" << endl;
         cout << "||| 0. Keluar                          |||" << endl;
         cout << ">>>====================================<<<" << endl;
         cout << " [>] Pilihan: ";
@@ -492,6 +599,9 @@ void menuSurvival(){
             break;
         case 3:
             menuSorting();
+            break;
+        case 4:
+            menuSearching();
             break;
         case 0:
             cout << " [^] Keluar dari menu Survival." << endl;
